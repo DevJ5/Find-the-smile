@@ -91,7 +91,7 @@ export default class GameController {
     if (player.symbol !== game.turn) throw new BadRequestError(`It's not your turn`)
     if (!isValidTransition(player.symbol, game.board, update.board)) {
       throw new BadRequestError(`Invalid move`)
-    }    
+    }   
 
     const winner = calculateWinner(update.board)
     if (winner) {
