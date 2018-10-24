@@ -1,3 +1,6 @@
+body {
+  background-color: #edebe3
+}
 .outer-paper {
   margin-top: 20px;
   margin: auto;
@@ -9,4 +12,17 @@
   width: 450px;
   margin: 0 auto;
 
+}
+.notYourTurn {
+  /* visibility: hidden */
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+  text-align: center
+}
+.yourTurn {
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+  text-align: center
 }
