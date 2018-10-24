@@ -1,12 +1,16 @@
 .board-tile {
-  height: 150px;
-  width: 150px;
+  height: 100px;
+  width: 100px;
+  outline: none;
+  cursor: pointer;
 }
 
 .board-tile.x {
-  background: red;
+  background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972531.jpeg');
+  background-size: 100px 100px
 }
 
 .board-tile.o {
-  background: green;
+  background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972535.jpeg');
+   background-size: 100px 100px
 }

@@ -32,7 +32,11 @@ export default class GameController {
   @Post('/games')
   @HttpCode(201)
   async createGame(@CurrentUser() user: User) {
-    const entity = await Game.create().save();
+    const randomNumber = () => Math.floor(Math.random() * 3);
+
+    const entity = await Game.create({
+      winningCell: [randomNumber(), randomNumber()]
+    }).save();
 
     await Player.create({
       game: entity,
@@ -91,14 +95,14 @@ export default class GameController {
     if (!player) throw new ForbiddenError(`You are not part of this game`);
     if (game.status !== 'started')
       throw new BadRequestError(`The game is not started yet`);
-    // if (player.symbol !== game.turn)
-    //   throw new BadRequestError(`It's not your turn`);
+    if (player.symbol !== game.turn)
+      throw new BadRequestError(`It's not your turn`);
     // if (!isValidTransition(player.symbol, game.board, update.board)) {
     //   throw new BadRequestError(`Invalid move`);
     // }
-console.log('----here----')
-console.log(update.clickedCell, game.winningCell, player.symbol);
-console.log('----here----')
+    console.log('----here----');
+    console.log(update.clickedCell, game.winningCell, player.symbol);
+    console.log('----here----');
     //const winner = calculateWinner(update.board)
     const winner = calculateWinner(
       update.clickedCell,
