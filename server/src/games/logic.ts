@@ -30,22 +30,27 @@ export const isValidTransition = (playerSymbol: Symbol, from: Board, to: Board) 
     changes[0].from === null
 }
 
-export const calculateWinner = (board: Board): Symbol | null =>
-  board
-    .concat(
-      // vertical winner
-      [0, 1, 2].map(n => board.map(row => row[n])) as Row[]
-    )
-    .concat(
-      [
-        // diagonal winner ltr
-        [0, 1, 2].map(n => board[n][n]),
-        // diagonal winner rtl
-        [0, 1, 2].map(n => board[2-n][n])
-      ] as Row[]
-    )
-    .filter(row => row[0] && row.every(symbol => symbol === row[0]))
-    .map(row => row[0])[0] || null
+export const calculateWinner = (clickedCell, winningCell, playerSymbol): Symbol | null => {
+  if(clickedCell[0] === winningCell[0] && clickedCell[1] === winningCell[1]) return playerSymbol
+  return null
+}
+
+// export const calculateWinner = (board: Board): Symbol | null =>
+//   board
+//     .concat(
+//       // vertical winner
+//       [0, 1, 2].map(n => board.map(row => row[n])) as Row[]
+//     )
+//     .concat(
+//       [
+//         // diagonal winner ltr
+//         [0, 1, 2].map(n => board[n][n]),
+//         // diagonal winner rtl
+//         [0, 1, 2].map(n => board[2-n][n])
+//       ] as Row[]
+//     )
+//     .filter(row => row[0] && row.every(symbol => symbol === row[0]))
+//     .map(row => row[0])[0] || null
 
 export const finished = (board: Board): boolean =>
   board

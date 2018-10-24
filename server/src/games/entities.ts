@@ -4,11 +4,13 @@ import User from '../users/entity'
 export type Symbol = 'x' | 'o'
 export type Row = [ Symbol | null, Symbol | null, Symbol | null ]
 export type Board = [ Row, Row, Row ]
+export type WinningCell = [number, number]
 
 type Status = 'pending' | 'started' | 'finished'
 
 const emptyRow: Row = [null, null, null]
 const emptyBoard: Board = [ emptyRow, emptyRow, emptyRow ]
+
 
 @Entity()
 export class Game extends BaseEntity {
@@ -18,6 +20,9 @@ export class Game extends BaseEntity {
 
   @Column('json', {default: emptyBoard})
   board: Board
+
+  @Column('json', { default: [Math.floor(Math.random() * 3), Math.floor(Math.random() * 3)]})
+  winningCell: WinningCell
 
   @Column('char', {length:1, default: 'x'})
   turn: Symbol
