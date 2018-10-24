@@ -63,7 +63,10 @@ export const createGame = () => (dispatch, getState) => {
   request
     .post(`${baseUrl}/games`)
     .set('Authorization', `Bearer ${jwt}`)
-    .then(result => dispatch(addGame(result.body)))
+    .then(result => {
+      console.log(result.body);
+      dispatch(addGame(result.body));
+    })
     .catch(err => console.error(err));
 };
 
