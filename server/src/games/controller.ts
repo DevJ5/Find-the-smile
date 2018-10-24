@@ -13,9 +13,8 @@ import {
   Patch
 } from 'routing-controllers';
 import User from '../users/entity';
-import { Game, Player, Board } from './entities';
-import { IsBoard, isValidTransition, calculateWinner, finished } from './logic';
-import { Validate } from 'class-validator';
+import { Game, Player } from './entities';
+import { calculateWinner, finished } from './logic';
 import { io } from '../index';
 
 // class GameUpdate {
@@ -32,11 +31,7 @@ export default class GameController {
   @Post('/games')
   @HttpCode(201)
   async createGame(@CurrentUser() user: User) {
-    const randomNumber = () => Math.floor(Math.random() * 3);
-
-    const entity = await Game.create({
-      winningCell: [randomNumber(), randomNumber()]
-    }).save();
+    const entity = await Game.create().save();
 
     await Player.create({
       game: entity,
@@ -100,9 +95,9 @@ export default class GameController {
     // if (!isValidTransition(player.symbol, game.board, update.board)) {
     //   throw new BadRequestError(`Invalid move`);
     // }
-    console.log('----here----');
-    console.log(update.clickedCell, game.winningCell, player.symbol);
-    console.log('----here----');
+console.log('----here----')
+console.log(update.clickedCell, game.winningCell, player.symbol);
+console.log('----here----')
     //const winner = calculateWinner(update.board)
     const winner = calculateWinner(
       update.clickedCell,

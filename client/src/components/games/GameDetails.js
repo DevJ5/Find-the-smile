@@ -56,7 +56,10 @@ class GameDetails extends PureComponent {
 
         {game.status === 'started' &&
           player &&
-          player.symbol === game.turn && <div>It's your turn!</div>}
+          player.symbol === game.turn && <div className="yourTurn">It's your turn!</div>}
+          {game.status === 'started' &&
+          player &&
+          player.symbol !== game.turn && <div className="notYourTurn">Wait for your turn...</div>}
 
         {game.status === 'pending' &&
           game.players.map(p => p.userId).indexOf(userId) === -1 && (

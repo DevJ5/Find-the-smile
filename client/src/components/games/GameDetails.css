@@ -8,5 +8,19 @@
 .board-container {
   width: 450px;
   margin: 0 auto;
+  text-align: center
 
+}
+.notYourTurn {
+  /* visibility: hidden */
+  font-size: 20px;
+  color: red;
+  font-weight: bold;
+  text-align: center
+}
+.yourTurn {
+  font-size: 20px;
+  color: green;
+  font-weight: bold;
+  text-align: center
 }
