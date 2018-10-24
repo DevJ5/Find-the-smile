@@ -7,16 +7,15 @@ const renderCel = (makeMove, rowIndex, cellIndex, symbol, hasTurn) => {
       className={`board-tile ${symbol || null} `}
       disabled={hasTurn}
       onClick={() => makeMove(rowIndex, cellIndex)}
-      key={`${rowIndex}-${cellIndex}`}>
-      {symbol || '-'}
-    </button>
+      key={`${rowIndex}-${cellIndex}`}
+    />
   );
 };
 
 export default ({ board, makeMove }) =>
-  board.map((cells, rowIndex) => (
+  board.map((row, rowIndex) => (
     <div key={rowIndex}>
-      {cells.map((symbol, cellIndex) =>
+      {row.map((symbol, cellIndex) =>
         renderCel(makeMove, rowIndex, cellIndex, symbol, false)
       )}
     </div>

@@ -24,8 +24,11 @@ class GameDetails extends PureComponent {
 
     const board = game.board.map((row, rowIndex) =>
       row.map((cell, cellIndex) => {
-        if (rowIndex === toRow && cellIndex === toCell) return 'x';
-        else return cell;
+        if (rowIndex === toRow && cellIndex === toCell) {
+          if (toRow === game.winningCell[0] && toCell === game.winningCell[1])
+            return 'o';
+          return 'x';
+        } else return cell;
       })
     );
     updateGame(game.id, board, clickedCell);
