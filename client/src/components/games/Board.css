@@ -5,12 +5,12 @@
   cursor: pointer;
 }
 
-.board-tile.x {
+.board-tile.wrong {
   background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972531.jpeg');
   background-size: 100px 100px
 }
 
-.board-tile.o {
+.board-tile.right {
   background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972535.jpeg');
    background-size: 100px 100px
 }

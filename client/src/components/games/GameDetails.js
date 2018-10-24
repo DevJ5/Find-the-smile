@@ -29,14 +29,14 @@ class GameDetails extends PureComponent {
             toRow === game.winningCells[0][0] &&
             toCell === game.winningCells[0][1]
           )
-            return 'o';
+            return 'right';
           if (
             toRow === game.winningCells[1][0] &&
             toCell === game.winningCells[1][1]
           )
-            return 'o';
+            return 'right';
 
-          return 'x';
+          return 'wrong';
         } else return cell;
       })
     );
