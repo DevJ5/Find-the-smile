@@ -30,8 +30,9 @@ export const isValidTransition = (playerSymbol: Symbol, from: Board, to: Board) 
     changes[0].from === null
 }
 
-export const calculateWinner = (clickedCell, winningCell, playerSymbol): Symbol | null => {
-  if(clickedCell[0] === winningCell[0] && clickedCell[1] === winningCell[1]) return playerSymbol
+export const calculateWinner = (clickedCell, winningCells, playerSymbol): Symbol | null => {
+  if(clickedCell[0] === winningCells[0][0] && clickedCell[1] === winningCells[0][1]) return playerSymbol
+  if(clickedCell[0] === winningCells[1][0] && clickedCell[1] === winningCells[1][1]) return playerSymbol
   return null
 }
 

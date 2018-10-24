@@ -17,6 +17,7 @@ import { Game, Player, Board } from './entities';
 import { IsBoard, isValidTransition, calculateWinner, finished } from './logic';
 import { Validate } from 'class-validator';
 import { io } from '../index';
+import { createRandomNumber } from '../helpers';
 
 // class GameUpdate {
 
@@ -32,10 +33,14 @@ export default class GameController {
   @Post('/games')
   @HttpCode(201)
   async createGame(@CurrentUser() user: User) {
-    const randomNumber = () => Math.floor(Math.random() * 3);
+
 
     const entity = await Game.create({
-      winningCell: [randomNumber(), randomNumber()]
+
+      winningCells: [
+        [createRandomNumber(2), createRandomNumber(2)],
+        [createRandomNumber(2), createRandomNumber(2)]
+      ]
     }).save();
 
     await Player.create({
@@ -97,18 +102,13 @@ export default class GameController {
       throw new BadRequestError(`The game is not started yet`);
     if (player.symbol !== game.turn)
       throw new BadRequestError(`It's not your turn`);
-    // if (!isValidTransition(player.symbol, game.board, update.board)) {
-    //   throw new BadRequestError(`Invalid move`);
-    // }
-    console.log('----here----');
-    console.log(update.clickedCell, game.winningCell, player.symbol);
-    console.log('----here----');
-    //const winner = calculateWinner(update.board)
+
     const winner = calculateWinner(
       update.clickedCell,
-      game.winningCell,
+      game.winningCells,
       player.symbol
     );
+
     if (winner) {
       game.winner = winner;
       game.status = 'finished';
@@ -117,6 +117,7 @@ export default class GameController {
     } else {
       game.turn = player.symbol === 'x' ? 'o' : 'x';
     }
+
     game.board = update.board;
     await game.save();
 
