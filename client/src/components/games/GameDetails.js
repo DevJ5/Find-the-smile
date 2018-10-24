@@ -7,6 +7,7 @@ import { userId } from '../../jwt';
 import Paper from 'material-ui/Paper';
 import Board from './Board';
 import './GameDetails.css';
+import { capitalize } from '../../helpers';
 
 class GameDetails extends PureComponent {
   componentWillMount() {
@@ -62,8 +63,8 @@ class GameDetails extends PureComponent {
         <h1>Game #{game.id}</h1>
 
         <span>
-          Status: {game.status}{' '}
-          {game.status === 'finished' && '- Congratulations, you won!'}
+          Status: {capitalize(game.status)}
+          {game.status === 'finished' && ' - Congratulations, you won!'}
         </span>
 
         {game.status === 'started' &&
