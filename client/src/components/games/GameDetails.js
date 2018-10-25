@@ -62,9 +62,14 @@ class GameDetails extends PureComponent {
       <Paper className="outer-paper">
         <h1>Game #{game.id}</h1>
 
+        <span>Status: {capitalize(game.status)}</span>
         <span>
-          Status: {capitalize(game.status)}
-          {game.status === 'finished' && ' - Congratulations, you won!'}
+          {game.status === 'finished' &&
+            player.symbol === game.turn &&
+            ' - Congratulations, you won!'}
+          {game.status === 'finished' &&
+            player.symbol !== game.turn &&
+            ' - Unfortunately you lost, better luck next time!'}
         </span>
 
         {game.status === 'started' &&
@@ -83,7 +88,9 @@ class GameDetails extends PureComponent {
             <button onClick={this.joinGame}>Join Game</button>
           )}
 
-        {winner && <p>Winner: {users[winner].firstName}</p>}
+        {winner && (
+          <p>Congratulations to the winner: {users[winner].firstName}</p>
+        )}
 
         <hr />
 
