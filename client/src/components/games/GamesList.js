@@ -64,7 +64,7 @@ class GamesList extends PureComponent {
         onClick={createGame}
         className="create-game"
       >
-        Create Game
+        Create New Game
       </Button>
 
       <div>

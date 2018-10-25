@@ -9,7 +9,13 @@ h2 {
 
 .create-game {
   margin-top: 10px !important;
+  background-color: yellowgreen !important
 }
+.game-card {
+  background-color: #edebe3 !important;
+  margin-top: 20px !important
+}
+
 
 .outer-paper {
   margin: auto;

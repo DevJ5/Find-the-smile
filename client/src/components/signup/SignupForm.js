@@ -20,7 +20,7 @@ export default class SignupForm extends PureComponent {
 	render() {
 		return (
       <div className="signup-form">
-  			<form onSubmit={this.handleSubmit}>
+  			<form className='inputs' onSubmit={this.handleSubmit}>
   				<label>
             Email
             <input type="email" name="email" value={
@@ -49,7 +49,7 @@ export default class SignupForm extends PureComponent {
   					<p style={{color:'red'}}>The passwords do not match!</p>
   				}
 
-  				<button type="submit">Sign up</button>
+  				<button className='signup' type="submit">Sign up</button>
   			</form>
       </div>
 		)

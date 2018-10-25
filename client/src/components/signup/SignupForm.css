@@ -1,3 +1,16 @@
 .signup-form label {
   display: block;
 }
+.inputs {
+  width: 300px;
+  margin-left: 10px;
+  font-size: 25px;
+  line-height: 30px;
+}
+input {
+  font-size: 25px;
+}
+.signup {
+  font-size: 25px;
+  margin-top: 10px
+}
