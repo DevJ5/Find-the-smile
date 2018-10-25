@@ -15,8 +15,8 @@ const TopBar = props => {
   return (
     <AppBar position="absolute" style={{ zIndex: 10 }}>
       <Toolbar>
-        <Typography variant="title" color="inherit" style={{ flex: 1 }}>
-          Guess the correct tile!
+        <Typography className='title' variant="title" color="inherit" style={{ flex: 1 }}>
+          Find the Smile!
         </Typography>
         {user && (
           <Button color="inherit">

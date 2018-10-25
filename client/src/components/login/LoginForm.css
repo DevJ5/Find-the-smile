@@ -1,11 +1,22 @@
 .login-form label {
   display: block;
 }
-.email {
-  position: relative;
-  left: 38px;
+h1 {
+  margin-left: 10px;
+}
+main {
+  margin-left: 20px;
 }
 .inputs {
+  width: 300px;
   margin-left: 10px;
-  font-size: 20px
+  font-size: 25px;
+  line-height: 30px;
+}
+input {
+  font-size: 25px;
+}
+.login {
+  font-size: 25px;
+  margin-top: 10px
 }
