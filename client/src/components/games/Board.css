@@ -11,7 +11,9 @@
     transform-style: preserve-3d;
 }
 .board-tile.wrong {
-  background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972531.jpeg');
+  /* // background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972531.jpeg'); */
+  background: url('../../images/angrysmiley.png');
+  background-color: yellow;
   background-size: 100px 100px;
   transform: rotateY(180deg);
   transform-style: preserve-3d;
@@ -19,7 +21,8 @@
 }
 
 .board-tile.right {
-  background: url('http://www.superlean.nl/Files/2/74000/74833/ProductPhotos/MaxContent/247972535.jpeg');
+  background: url('../../images/happysmiley.png');
+  background-color: yellow;
    background-size: 100px 100px;
    transform: rotateY(180deg);
    transform-style: preserve-3d;
