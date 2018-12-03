@@ -5,11 +5,12 @@ import {
   Entity,
   Index,
   OneToMany,
-  ManyToOne
-} from 'typeorm';
-import User from '../users/entity';
+  ManyToOne,
+  JoinColumn
+} from "typeorm";
+import User from "../users/entity";
 
-export type Symbol = 'x' | 'o';
+export type Symbol = "x" | "o";
 export type Row = [
   Symbol | null,
   Symbol | null,
@@ -20,7 +21,7 @@ export type Row = [
 export type Board = [Row, Row, Row, Row, Row];
 export type WinningCells = [[number, number], [number, number]];
 
-type Status = 'pending' | 'started' | 'finished';
+type Status = "pending" | "started" | "finished";
 const emptyRow: Row = [null, null, null, null, null];
 const emptyBoard: Board = [emptyRow, emptyRow, emptyRow, emptyRow, emptyRow];
 
@@ -29,19 +30,19 @@ export class Game extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
-  @Column('json', { default: emptyBoard })
+  @Column("json", { default: emptyBoard })
   board: Board;
 
-  @Column('json', { nullable: true })
+  @Column("json", { nullable: true })
   winningCells: WinningCells;
 
-  @Column('char', { length: 1, default: 'x' })
+  @Column("char", { length: 1, default: "x" })
   turn: Symbol;
 
-  @Column('char', { length: 1, nullable: true })
+  @Column("char", { length: 1, nullable: true })
   winner: Symbol;
 
-  @Column('text', { default: 'pending' })
+  @Column("text", { default: "pending" })
   status: Status;
 
   // this is a relation, read more about them here:
@@ -51,20 +52,21 @@ export class Game extends BaseEntity {
 }
 
 @Entity()
-@Index(['game', 'user', 'symbol'], { unique: true })
+@Index(["game", "user", "symbol"], { unique: true })
 export class Player extends BaseEntity {
   @PrimaryGeneratedColumn()
   id?: number;
 
+  @Column("int", { nullable: true })
+  userId: number;
+
+  @Column("char", { length: 1 })
+  symbol: Symbol;
+
   @ManyToOne(_ => User, user => user.players)
+  @JoinColumn({ name: "user_id" })
   user: User;
 
   @ManyToOne(_ => Game, game => game.players)
   game: Game;
-
-  @Column()
-  userId: number;
-
-  @Column('char', { length: 1 })
-  symbol: Symbol;
 }
